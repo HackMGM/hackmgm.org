@@ -3,8 +3,11 @@
 <head>
   <title>hackMGM</title>
 	<style type="text/css" title="text/css">
-		body {
+		.header {
 			background-color: white;
+		}
+		body {
+			background-color:#d3d1d0;
 			padding:0;
 			margin:0;
 		}
@@ -19,8 +22,6 @@
 		}
 		.gray-main {
 			padding-top:100px;
-			background-color:#d3d1d0;
-			min-height:2000px;
 		}
 		.who-we-are {
 			font-style:italic;
@@ -30,20 +31,29 @@
 			margin-top:100px;
 			font-weight:400%;
 		}
-		
+		.love {
+			margin-top: 400px;
+		}
+		.hashtag-link {
+			text-decoration:none;
+			color:black;
+			text-underline:none;
+		}
 	</style>
 </head>
 <body>
 	<div class="main">
-		<img src="logo.png" alt="HackMGM - Shape Your City" height="100" />
-		<img src="city-scape.png" />
+		<div class="header">
+			<img src="logo.png" alt="HackMGM - Shape Your City" height="100" />
+			<img src="city-scape.png" />
+		</div>
 		<div class="gray-main">
 		<div class="who-we-are">We're a community of creatives, makers, developers and doers, working together to build a better MGM.</div>
 		<div class="join-meetup-link"><a href="https://www.meetup.com/Hack-MGM/">Join us in the HackMGM meetup group</a></div>
 		
-		<div class="hashtag"><a href="https://twitter.com/#hackmgm">#hackmgm</div>
+		<div class="hashtag"><a class="hashtag-link" href="https://twitter.com/#hackmgm">#hackmgm</a></div>
 		</div>
-		
+		<p class="love">Made with <span style="color:red">&hearts;</span> in Montgomery, AL</p>
 		
 		</div>
 	</div>
