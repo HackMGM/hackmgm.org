@@ -1,2 +1,2 @@
 # hackmgm-website
-Website for https://hackmgm.org/
+Website for http://hackmgm.org/
