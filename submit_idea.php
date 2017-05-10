@@ -10,11 +10,11 @@ if (!isset($_POST['personemail']) || !filter_var($_POST['personemail'], FILTER_V
 {
     $errEmail = "Please enter a valid email address.";
 }
-if (!isset($_POST['personname']))
+if (!isset($_POST['personname']) || $submittername == '')
 {
     $errName = "Name is a required field.";
 }
-if (!isset($_POST['ideabox']))
+if (!isset($_POST['ideabox']) || $submitteridea == '' || strlen($submitteridea) < 10)
 {
     $errIdea = "Oops, you didn't include your big idea.";
 }
@@ -31,23 +31,23 @@ else
         // TODO send email
         $from = 'no-reply@hackmgm.org'; 
         $to = 'jacquelinehfl@gmail.com'; 
-        $subject = '[hackmgm] Submit Idea - ' . $submittername;
+        $subject = '[hackmgm.org] Submit Idea - ' . $submittername;
             
         $body = "From: $submittername\n E-Mail: $submitteremail\n Project Idea:\n $submitteridea";
         $body .= "\nAbout submitter: $submitterabout";
-        //if (mail ($to, $subject, $body, $from))
-        if (true)
+        $mail_sent = mail($to, $subject, $body, $from);
+        if ($mail_sent)
         {
-            $result='<div class="alert alert-success">Thank You! I will be in touch</div>';
+            //$result='<div class="alert alert-success">Thank You! I will be in touch</div>';
+            header( 'Location: /hackmgm.org/index.html?mail=sent' );
         } else
         {
-            $result='<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later</div>';
+            //$result='<div class="alert alert-danger">Sorry, there was an error sending your message. Please try again.</div>';
         }
-        header( 'Location: /index.html' );
     }
 }
 
-if ($errEmail || $errName || $errIdea)
+if ($errEmail || $errName || $errIdea || !$mail_sent)
 {
 ?>
 <!DOCTYPE html>
@@ -112,25 +112,30 @@ if ($errEmail || $errName || $errIdea)
 
 
     <div class="container">
+<?php
+    if (!$mail_sent)
+    {?>
+        <div class="alert alert-danger">Sorry, there was an error sending your message. Please try again.</div>
+<?php } ?>
         <form action="submit_idea.php" method="POST">
           <div class="form-group">
             <label for="personname">Name</label>
             <input type="text" class="form-control" name="personname" id="personNameId" placeholder="First and Last name"
                 value="<?php echo htmlspecialchars($_POST['personname']); ?>">
-            <p class="bg-danger"><?php echo $errName?></p>
+            <p class="text-danger"><?php echo $errName?></p>
           </div>
           <div class="form-group">
             <label for="personemail">Email address</label>
             <input type="email" class="form-control" id="personEmailId" name="personemail" placeholder="Email"
                 value="<?php echo htmlspecialchars($_POST['personemail']); ?>">
-            <p class="bg-danger"><?php echo $errEmail?></p>
+            <p class="text-danger"><?php echo $errEmail?></p>
           </div>
           <div class="form-group">
             <label for="ideabox">What's the Big Idea? (Please include as much information as possible.)</label>
             <textarea type="text" class="form-control" id="ideaBoxId" name="ideabox" rows="4" placeholder="Tell us about your wonderful idea.">
                 <?php echo htmlspecialchars($_POST['ideabox']);?></textarea>
             <p class="help-block">Please include relevant URLs and information.</p>
-            <p class="bg-danger"><?php echo $errIdea?></p>
+            <p class="text-danger"><?php echo $errIdea?></p>
           </div>
           <div class="form-group">
             <label for="aboutcontact">Tell us about yourself (optional)</label>
