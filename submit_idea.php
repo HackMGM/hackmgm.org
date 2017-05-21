@@ -28,9 +28,9 @@ else
     // If there are no errors, send the email
     if (!$errEmail && !$errName && !$errIdea)
     {
-        // TODO send email
+        // send email
         $from = 'no-reply@hackmgm.org'; 
-        $to = 'jacquelinehfl@gmail.com'; 
+        $to = 'jacquelinehfl@gmail.com, elijahlofgren@gmail.com, bstephens@netelysis.com'; 
         $subject = '[hackmgm.org] Submit Idea - ' . $submittername;
             
         $body = "From: $submittername\n E-Mail: $submitteremail\n Project Idea:\n $submitteridea";
@@ -39,7 +39,8 @@ else
         if ($mail_sent)
         {
             //$result='<div class="alert alert-success">Thank You! I will be in touch</div>';
-            header( 'Location: /hackmgm.org/index.html?mail=sent' );
+            //header( 'Location: /hackmgm.org/index.html?mail=sent' );
+            header( 'Location: /index.html?mail=sent' );
         } else
         {
             //$result='<div class="alert alert-danger">Sorry, there was an error sending your message. Please try again.</div>';
