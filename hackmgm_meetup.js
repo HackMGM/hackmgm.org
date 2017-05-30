@@ -52,12 +52,10 @@ function eventBuildTableRow(event) {
         '<h5><a target="_blank" href="' + event.event_url + '">' + event.name + '</a></h5>' +
         '</div>' +
         '</div>';
-    console.log(ret);
     return ret;
 }
 
 function eventAddRow(event) {
-    //   console.log(event);
     // Check if <tbody> tag exists, add one if not
     if ($("#upcomingList tbody").length == 0) {
         $("#upcomingList").append("<tbody></tbody>");
@@ -68,7 +66,6 @@ function eventAddRow(event) {
 }
 
 function eventListSuccess(events) {
-    console.log(events.results);
     // Iterate over the collection of data
     $.each(events.results, function (index, event) {
         // Add a row to the Product table
@@ -93,14 +90,8 @@ function upcomingEvents() {
 
 
 function groupStatsSuccess(stats) {
-//console.log(stats.results[0]);
-    console.log(stats.results[0].members);
-    console.log(stats.results[0].who);
-    console.log(stats.results[0].description);
-
     if ($("#meetup-stats").length == 0) {
 // do nothing
-        console.log("error with meetup-stats");
     }
     else {
 
