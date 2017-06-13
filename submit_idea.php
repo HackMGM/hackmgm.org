@@ -96,7 +96,7 @@ if ($errEmail || $errName || $errIdea || !$mail_sent) {
                     <li><a href="https://www.meetup.com/hackMGM/" target="_blank"><i class="fa fa-meetup fa-2x"></i></a></li>
                     <li><a href="https://twitter.com/hackmgm" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
                     <li><a href="https://www.facebook.com/groups/hackMGM/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-                    <li><a href="https://hackmgm.slack.com/" target="_blank"><i class="fa fa-slack fa-2x"></i></a></li>
+                    <li><a href="https://hackmgm.signup.team/" target="_blank"><i class="fa fa-slack fa-2x"></i></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
