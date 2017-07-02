@@ -3,7 +3,8 @@ $submitteremail = $_POST['personemail'];
 $submittername = $_POST['personname'];
 $submitteridea = $_POST['ideabox'];
 $submitterabout = $_POST['aboutcontact'];
-$honeypot = $_POST['foo'];
+
+$mail_sent = false;
 
 /* Required fields */
 if (!isset($_POST['personemail']) || !filter_var($_POST['personemail'], FILTER_VALIDATE_EMAIL)) {
